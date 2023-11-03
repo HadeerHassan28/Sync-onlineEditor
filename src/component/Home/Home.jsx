@@ -5,13 +5,14 @@ import CodeEditor from "../CodeEditor/CodeEditor";
 const Home = () => {
   const [htmlCode, setHtmlCode] = useState(
     `
-   <div>Hello, World!</div>
+   <div class="init">Hello, World!</div>
  
 `
   );
   const [cssCode, setCssCode] = useState(`.init{
 padding: 20px;
 margin: 20px;
+font-size:25px;
   }`);
   const [jsCode, setJSCode] = useState(
     `document.querySelector("div").style.color = "green";`
@@ -40,7 +41,7 @@ margin: 20px;
 
   return (
     <>
-      <div className=" container border my-5 pb-5 ">
+      <div className=" container  my-5 pb-5 ">
         <header className="App-header mt-3 text-center p-2">
           <h1 className="title">
             <u>
@@ -74,7 +75,7 @@ margin: 20px;
             </div>
 
             {/* outPut */}
-            <div className="col-lg-6 output-container ">
+            <div className="col-lg-6 output-container border pt-1">
               <h2 className="outTitle">Output:-</h2>
               <br />
               <iframe

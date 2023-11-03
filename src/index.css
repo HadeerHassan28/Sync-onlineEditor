@@ -4,25 +4,23 @@
   --main-color: #000000;
   --light-color: #e3dcde;
   --text-color: #1c53ec95;
-  --rating-color: #f0d678;
+  --rating-color: #e73146;
   --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
     rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
     rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
   --font-family: "Encode Sans Expanded", sans-serif;
-  --background: radial-gradient(to left, var(--light-color), var(--main-color));
 
   /* --background: url("./assets/bg.avif"); */
 }
 
 body {
   font-family: var(--font-family) !important;
-  background: var(--background);
+  background: var(--light-color);
   /* background-size: cover;
   background-repeat: repeat;
   background-position: center; */
   /* position: relative; */
   height: 100vh !important;
-  padding-bottom: ;
 }
 .title {
   color: var(--text-color);
@@ -30,10 +28,9 @@ body {
 .output {
   font-size: larger;
   background-color: var(--light-color) !important;
-  margin-right: ;
 }
 .border {
-  border: 2 solide var(--light-color);
+  border: 1px solid var(--rating-color) !important;
 }
 .outTitle {
   color: var(--main-color);
