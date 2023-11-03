@@ -4,9 +4,20 @@ import CodeEditor from "../CodeEditor/CodeEditor";
 
 const Home = () => {
   const [htmlCode, setHtmlCode] = useState(
-    "<h3>Please Enter the HTML code</h3>"
+    `
+   <div>Hello, World!</div>
+ 
+`
   );
-  const [cssCode, setCssCode] = useState(null);
+  const [cssCode, setCssCode] = useState(`.init{
+padding: 20px;
+margin: 20px;
+  }`);
+  const [jsCode, setJSCode] = useState(
+    `document.querySelector("div").style.color = "green";`
+  );
+
+  //!CSS
   useEffect(() => {
     const styleElement = document.createElement("style");
     styleElement.innerHTML = cssCode;
@@ -16,9 +27,20 @@ const Home = () => {
       document.head.removeChild(styleElement);
     };
   }, [cssCode]);
+
+  //!JS
+  useEffect(() => {
+    try {
+      const executeCode = new Function(jsCode);
+      executeCode(); // Execute the code
+    } catch (error) {
+      console.error("Error executing JavaScript:", error);
+    }
+  }, [jsCode]);
+
   return (
     <>
-      <div className="App container border my-5 pb-5">
+      <div className=" container border my-5 pb-5 ">
         <header className="App-header mt-3 text-center p-2">
           <h1 className="title">
             <u>
@@ -26,26 +48,41 @@ const Home = () => {
             </u>
           </h1>
         </header>
-        <div className="container mt-3">
-          <div className="row">
-            <div className="col-md-6">
+        <div className="container mt-3 ">
+          <div className="row ">
+            <div className="col-lg-6 mr-1">
+              {/* html */}
               <h4 className="text-primary">HTML</h4>
               <CodeEditor
                 code={htmlCode}
                 onChange={setHtmlCode}
                 language="html"
+                className="my-3"
               />
               <br />
+              {/* css */}
               <h4 className="text-primary">CSS</h4>
               <CodeEditor code={cssCode} onChange={setCssCode} language="css" />
+              <br />
+              {/* JS */}
+              <h4 className="text-primary">{`React (JS)`}</h4>
+              <CodeEditor
+                code={jsCode}
+                onChange={setJSCode}
+                language="javascript"
+              />
             </div>
 
-            <div className="col-md-6 output-container ">
+            {/* outPut */}
+            <div className="col-lg-6 output-container ">
               <h2 className="outTitle">Output:-</h2>
               <br />
-              <div
-                className="output"
-                dangerouslySetInnerHTML={{ __html: htmlCode }}
+              <iframe
+                title="output"
+                sandbox="allow-scripts"
+                width="100%"
+                height="400px"
+                srcDoc={`<html><style>${cssCode}</style><body>${htmlCode}</body><script>${jsCode}</script></html>`}
               />
             </div>
           </div>
