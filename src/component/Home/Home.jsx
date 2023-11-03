@@ -41,7 +41,7 @@ font-size:25px;
 
   return (
     <>
-      <div className=" container  my-5 pb-5 ">
+      <div className=" container  my-3 pb-5 ">
         <header className="App-header mt-3 text-center p-2">
           <h1 className="title">
             <u>
